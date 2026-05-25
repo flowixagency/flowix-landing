@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* ─── KEYFRAMES ─────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0   0   rgba(0,204,106,0.0); }
+  50%       { box-shadow: 0 0 32px 8px rgba(0,204,106,0.14); }
+}
+@keyframes shimmer-green {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes pulse-badge {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,204,106,0); }
+  50%       { box-shadow: 0 0 0 9px rgba(0,204,106,0.13); }
+}
+@keyframes border-glow {
+  0%, 100% { box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04); }
+  50%       { box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 60px rgba(0,204,106,0.1), 0 0 0 1px rgba(0,204,106,0.15); }
+}
+
+/* ─── LOAD ANIMATIONS ────────────────────────────────────────── */
+.anim-badge   { animation: fadeIn      0.6s cubic-bezier(0.16,1,0.3,1) forwards; opacity: 0; }
+.anim-up      { animation: fadeInUp    0.8s cubic-bezier(0.16,1,0.3,1) forwards; opacity: 0; }
+.anim-preview { animation: fadeInRight 0.9s cubic-bezier(0.16,1,0.3,1) forwards; opacity: 0; }
+
+/* ─── CONTINUOUS ANIMATIONS ──────────────────────────────────── */
+.float      { animation: float     5s ease-in-out infinite; }
+.pulse-dot  { animation: pulseDot  2s ease-in-out infinite; }
+.glow-pro   { animation: glowPulse 3s ease-in-out infinite; }
+
+/* Shimmer en título verde */
+.shimmer-green {
+  color: #00CC6A;
+  background: linear-gradient(90deg, #00CC6A 0%, #7fffc4 35%, #00CC6A 65%, #7fffc4 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-green 4s linear infinite;
+}
+
+/* Badge con halo pulsante */
+.pulse-badge { animation: pulse-badge 3s ease infinite; }
+
+/* Glow en card del hero */
+.hero-card-glow { animation: border-glow 4s ease infinite; }
+
+/* ─── SCROLL REVEAL ───────────────────────────────────────────── */
+.sr {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+              transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.sr.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── CARD HOVERS ────────────────────────────────────────────── */
+.feat-card { transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; }
+.feat-card:hover {
+  border-color: rgba(0,204,106,0.35) !important;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,204,106,0.07);
+}
+
+.niche-chip { transition: border-color 0.2s, color 0.2s; }
+.niche-chip:hover { border-color: rgba(0,204,106,0.4) !important; color: #e4e4e7 !important; }
+
+.nav-link { transition: color 0.15s; }
+.nav-link:hover { color: #fff !important; }
+
+.footer-link { transition: color 0.15s; }
+.footer-link:hover { color: #a1a1aa !important; }
+
+/* ─── RESPONSIVE — 900px ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-grid     { grid-template-columns: 1fr !important; }
+  .hero-preview  { display: none !important; }
+  .download-grid { grid-template-columns: 1fr !important; padding: 40px 32px !important; }
+  .stats-grid    { grid-template-columns: repeat(2, 1fr) !important; }
+  .footer-grid   { grid-template-columns: 1fr 1fr !important; gap: 36px !important; }
+  .footer-grid > div:first-child { grid-column: 1 / -1; }
+}
+
+/* ─── RESPONSIVE — 600px ─────────────────────────────────────── */
+@media (max-width: 600px) {
+  .nav-links    { display: none !important; }
+  .hero-section { padding: 80px 20px 60px !important; }
+  .section-pad  { padding: 60px 20px !important; }
+  .stats-grid   { grid-template-columns: 1fr 1fr !important; }
+  .footer-grid  { grid-template-columns: 1fr !important; }
+  .pricing-table th,
+  .pricing-table td { padding: 14px 10px !important; font-size: 13px !important; }
+  .download-grid { padding: 32px 24px !important; }
+}
