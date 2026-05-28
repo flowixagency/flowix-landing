@@ -69,8 +69,14 @@ export default function LandingPage() {
         {/* Top glow */}
         <div aria-hidden style={{
           position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
-          width: 900, height: 500,
-          background: "radial-gradient(ellipse at 50% 0%, rgba(0,204,106,0.09) 0%, transparent 60%)",
+          width: 1000, height: 560,
+          background: "radial-gradient(ellipse at 50% 0%, rgba(0,204,106,0.12) 0%, transparent 62%)",
+          pointerEvents: "none",
+        }} />
+        <div aria-hidden style={{
+          position: "absolute", bottom: "10%", right: "-8%",
+          width: 500, height: 500,
+          background: "radial-gradient(circle, rgba(0,204,106,0.04) 0%, transparent 65%)",
           pointerEvents: "none",
         }} />
 
@@ -102,7 +108,7 @@ export default function LandingPage() {
               lineHeight: 1.04, letterSpacing: "-3px",
               margin: "0 0 28px", animationDelay: "0.1s",
             }}>
-              Gestioná tu<br />negocio como<br /><span className="shimmer-green">un profesional.</span>
+              Gestioná tu<br />negocio como<br /><em style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic", color: G, letterSpacing: "-1px" }}>un profesional.</em>
             </h1>
 
             <p className="anim-up" style={{
@@ -249,7 +255,7 @@ export default function LandingPage() {
           <div className="sr" style={{ maxWidth: 580, marginBottom: 64 }}>
             <p style={{ color: G, fontSize: 12, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: 14 }}>Funcionalidades</p>
             <h2 style={{ fontSize: "clamp(28px, 3.5vw, 52px)", fontWeight: 800, letterSpacing: "-2.5px", lineHeight: 1.04, margin: "0 0 18px" }}>
-              Todo lo que necesitás,<br />en un solo lugar.
+              Todo lo que necesitás,<br /><em style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic", color: G }}>en un solo lugar.</em>
             </h2>
             <p style={{ color: "#6b6b6b", fontSize: 16, lineHeight: 1.75, margin: 0 }}>
               Sin aprendizaje complicado, sin configuraciones eternas. Empezás a usar Flowix el mismo día que lo instalás.
@@ -277,7 +283,7 @@ export default function LandingPage() {
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <p className="sr" style={{ textAlign: "center" as const, color: G, fontSize: 12, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: 14 }}>Cómo funciona</p>
           <h2 className="sr" style={{ textAlign: "center" as const, fontSize: "clamp(28px, 3.5vw, 52px)", fontWeight: 800, letterSpacing: "-2.5px", margin: "0 0 72px", lineHeight: 1.04 }}>
-            Arrancás en 3 pasos.
+            Arrancás en <em style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic", color: G }}>3 pasos.</em>
           </h2>
           <div style={{ display: "flex", flexDirection: "column" as const }}>
             {[
@@ -311,7 +317,7 @@ export default function LandingPage() {
           <div className="sr" style={{ maxWidth: 600, marginBottom: 80 }}>
             <p style={{ color: G, fontSize: 12, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: 14 }}>El sistema en detalle</p>
             <h2 style={{ fontSize: "clamp(28px, 3.5vw, 52px)", fontWeight: 800, letterSpacing: "-2.5px", lineHeight: 1.04, margin: "0 0 18px" }}>
-              Cada módulo resuelve<br />un problema real.
+              Cada módulo resuelve<br /><em style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic", color: G }}>un problema real.</em>
             </h2>
             <p style={{ color: "#6b6b6b", fontSize: 16, lineHeight: 1.75, margin: 0 }}>
               No es un sistema genérico con funciones de relleno. Cada parte de Flowix fue diseñada con el flujo de trabajo real de tu negocio en mente.
@@ -497,7 +503,7 @@ export default function LandingPage() {
             <div>
               <p style={{ color: G, fontSize: 12, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: 14 }}>Descarga gratuita</p>
               <h2 style={{ fontSize: "clamp(28px, 3.5vw, 52px)", fontWeight: 800, letterSpacing: "-2.5px", margin: "0 0 16px", lineHeight: 1.04 }}>
-                Instalá Flowix<br />en tu PC hoy.
+                Instalá Flowix<br /><em style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic", color: G }}>en tu PC hoy.</em>
               </h2>
               <p style={{ color: "#6b6b6b", fontSize: 16, lineHeight: 1.75, margin: "0 0 32px", maxWidth: 420 }}>
                 Los datos viven en la nube, el programa en tu escritorio. Rápido, confiable y siempre actualizado.
