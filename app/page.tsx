@@ -524,6 +524,19 @@ export default function LandingPage() {
                 whiteSpace: "nowrap" as const, letterSpacing: "-0.3px",
               }}>↓ Descargar .exe</a>
               <p style={{ color: "#333", fontSize: 12, marginTop: 12 }}>~78 MB · Windows 10/11</p>
+              <a
+                href="/docs/instructivo_flowix.pdf"
+                download
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 7, marginTop: 16,
+                  color: "#555", fontSize: 13, textDecoration: "none",
+                  border: "1px solid rgba(255,255,255,0.08)", borderRadius: 9,
+                  padding: "9px 18px", background: "rgba(255,255,255,0.03)",
+                  transition: "color 0.2s",
+                }}
+              >
+                📄 Instructivo de instalación (PDF)
+              </a>
             </div>
           </div>
         </div>
