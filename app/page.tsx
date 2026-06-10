@@ -1,3 +1,6 @@
+import ScrollReveal from "./components/ScrollReveal";
+import FeatureTabs from "./components/FeatureTabs";
+
 const G = "#00CC6A";
 const APP_URL = "https://flowix-web-production.up.railway.app";
 const GRAIN = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`;
@@ -36,10 +39,15 @@ export default function LandingPage() {
   ];
 
   return (
-    <main style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: "#fff", background: "#000", overflowX: "hidden" }}>
+    <main style={{ fontFamily: "'Outfit', system-ui, sans-serif", color: "#fff", background: "#050508", overflowX: "hidden" }}>
 
       {/* Grain */}
       <div aria-hidden style={{ position: "fixed", inset: 0, backgroundImage: GRAIN, opacity: 0.022, pointerEvents: "none", zIndex: 9999 }} />
+
+      {/* Premium bg glow */}
+      <div aria-hidden style={{ position: "fixed", top: 0, left: 0, right: 0, height: "90vh", background: "radial-gradient(ellipse 100% 70% at 50% 0%, rgba(0,204,106,0.18) 0%, transparent 65%)", pointerEvents: "none", zIndex: 0 }} />
+      {/* Ambient glow secundario */}
+      <div aria-hidden style={{ position: "fixed", bottom: 0, right: "-10%", width: "55vw", height: "55vh", background: "radial-gradient(ellipse, rgba(0,150,255,0.04) 0%, transparent 65%)", pointerEvents: "none", zIndex: 0 }} />
 
       {/* ── NAV ─────────────────────────────────────────────── */}
       <nav style={{
@@ -60,7 +68,7 @@ export default function LandingPage() {
           <a href="#detalle"  className="nav-link" style={{ color: "#71717a", fontSize: 14, textDecoration: "none", padding: "8px 16px", borderRadius: 8 }}>El sistema</a>
           <a href={`${APP_URL}/login`} className="nav-link" style={{ color: "#71717a", fontSize: 14, textDecoration: "none", padding: "8px 16px", borderRadius: 8 }}>Ingresar</a>
         </div>
-        <a href={`${APP_URL}/register`} style={{ background: G, color: "#000", fontSize: 14, fontWeight: 700, textDecoration: "none", padding: "10px 24px", borderRadius: 10 }}>Empezar gratis</a>
+        <a href={WA_GENERAL} target="_blank" rel="noopener noreferrer" style={{ background: G, color: "#000", fontSize: 14, fontWeight: 700, textDecoration: "none", padding: "10px 24px", borderRadius: 10 }}>Quiero probarlo</a>
       </nav>
 
       {/* ── HERO ─────────────────────────────────────────────── */}
@@ -100,7 +108,7 @@ export default function LandingPage() {
               fontSize: 12, color: G, fontWeight: 600, letterSpacing: "0.02em",
             }}>
               <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: G, display: "inline-block" }} />
-              v1.0 — Ya disponible para Windows
+              App de escritorio · También disponible en web
             </div>
 
             <h1 className="anim-up" style={{
@@ -112,26 +120,26 @@ export default function LandingPage() {
             </h1>
 
             <p className="anim-up" style={{
-              fontSize: "clamp(15px, 1.8vw, 17px)", color: "#6b6b6b", lineHeight: 1.75,
+              fontSize: "clamp(15px, 1.8vw, 17px)", color: "#999", lineHeight: 1.75,
               maxWidth: 460, marginBottom: 40, animationDelay: "0.22s",
             }}>
-              Agenda, caja, clientes y reportes en una sola app. Para barberías, spas, estéticas y más. Instalá en tu PC, datos siempre en la nube.
+              Agenda, caja, clientes y reportes en un solo sistema. Instalá en tu PC o abrí desde el navegador — los datos siempre en la nube, siempre disponibles.
             </p>
 
             <div className="anim-up" style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28, animationDelay: "0.32s" }}>
-              <a href="#download" style={{
+              <a href={WA_GENERAL} target="_blank" rel="noopener noreferrer" style={{
                 background: G, color: "#000", fontWeight: 700, fontSize: 15,
                 textDecoration: "none", padding: "14px 28px", borderRadius: 12, letterSpacing: "-0.3px",
-              }}>Descargar para Windows</a>
-              <a href={`${APP_URL}/register`} style={{
+              }}>Quiero probarlo →</a>
+              <a href={`${APP_URL}/login`} style={{
                 background: "rgba(255,255,255,0.05)", color: "#e4e4e7", fontWeight: 600, fontSize: 15,
                 textDecoration: "none", padding: "14px 28px", borderRadius: 12,
                 border: "1px solid rgba(255,255,255,0.1)",
-              }}>Probar online →</a>
+              }}>Acceder desde el navegador →</a>
             </div>
 
             <div className="anim-up" style={{ display: "flex", gap: 22, flexWrap: "wrap", animationDelay: "0.42s" }}>
-              {["7 días gratis", "Sin tarjeta", "Datos seguros"].map(t => (
+              {["Sin compromiso", "Windows + Web", "Soporte local"].map(t => (
                 <span key={t} style={{ color: "#444", fontSize: 13, display: "flex", alignItems: "center", gap: 6 }}>
                   <span style={{ color: G, fontWeight: 700 }}>✓</span> {t}
                 </span>
@@ -220,10 +228,10 @@ export default function LandingPage() {
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)", background: "rgba(255,255,255,0.01)" }}>
         <div className="stats-grid sr" style={{ maxWidth: 1180, margin: "0 auto", padding: "30px 40px", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", textAlign: "center" as const }}>
           {[
-            { value: "8",         label: "Rubros soportados" },
-            { value: "100%",      label: "Cloud — datos siempre seguros" },
-            { value: "3",         label: "Planes para tu negocio" },
-            { value: "Win 10/11", label: "Compatible con Windows" },
+            { value: "8",     label: "Rubros soportados" },
+            { value: "100%",  label: "Cloud — datos siempre seguros" },
+            { value: "2",    label: "Formas de acceder: PC y web" },
+            { value: "ARG", label: "Soporte local, mismo huso horario" },
           ].map((s, i) => (
             <div key={i} style={{ padding: "0 24px", borderRight: i < 3 ? "1px solid rgba(255,255,255,0.05)" : undefined }}>
               <p style={{ margin: 0, fontSize: "clamp(20px, 2.5vw, 28px)", fontWeight: 800, letterSpacing: "-1px", color: G }}>{s.value}</p>
@@ -233,19 +241,115 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* ── NICHES ──────────────────────────────────────────── */}
-      <section className="sr" style={{ padding: "72px 40px", maxWidth: 1180, margin: "0 auto" }}>
-        <p style={{ textAlign: "center" as const, color: "#333", fontSize: 12, marginBottom: 20, textTransform: "uppercase" as const, letterSpacing: "0.12em", fontWeight: 700 }}>Adaptado a tu rubro</p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center" }}>
-          {niches.map(n => (
-            <div key={n.label} className="niche-chip" style={{
-              display: "flex", alignItems: "center", gap: 8,
-              background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: 12, padding: "10px 18px", fontSize: 14, color: "#666", cursor: "default",
-            }}>
-              <span style={{ fontSize: 18 }}>{n.emoji}</span> {n.label}
-            </div>
-          ))}
+      {/* ── PAIN POINTS ─────────────────────────────────────── */}
+      <section className="section-pad" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+        <div style={{ maxWidth: 1180, margin: "0 auto" }}>
+          <div className="sr" style={{ textAlign: "center" as const, marginBottom: 56 }}>
+            <p style={{ color: G, fontSize: 12, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: 14 }}>El problema</p>
+            <h2 style={{ fontSize: "clamp(28px, 3.5vw, 52px)", fontWeight: 800, letterSpacing: "-2.5px", lineHeight: 1.04, margin: 0 }}>
+              ¿Te suena familiar?
+            </h2>
+          </div>
+          <div className="pain-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 16 }}>
+            {[
+              { tag: "Sin agenda",   pain: "Los turnos son un caos — WhatsApp por todos lados, cuaderno en mano, clientes que se olvidan y solapamientos que te arruinan el día." },
+              { tag: "Sin caja",     pain: "Sabés cuánto ganaste cuando contás la plata, pero no cuánto fue efectivo, cuánto transferencia, ni cuánto le tocó a cada profesional." },
+              { tag: "Sin historial",pain: "Tenés clientes de hace años y no recordás qué les hiciste la última vez, qué les gusta o cuándo fue su visita anterior." },
+              { tag: "Sin reportes", pain: "Al final del mes no podés responder: ¿cuál fue tu mejor semana? ¿qué servicio te deja más plata? ¿quién del equipo trabajó más?" },
+            ].map((p, i) => (
+              <div key={i} className="sr" style={{
+                background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.07)",
+                borderRadius: 18, padding: "32px 36px", position: "relative",
+                transitionDelay: `${i * 0.08}s`,
+              }}>
+                <div style={{
+                  display: "inline-block", background: "rgba(239,68,68,0.08)",
+                  border: "1px solid rgba(239,68,68,0.2)", borderRadius: 8,
+                  padding: "4px 12px", fontSize: 11, color: "#ef4444", fontWeight: 700,
+                  letterSpacing: "0.06em", textTransform: "uppercase" as const, marginBottom: 18,
+                }}>{p.tag}</div>
+                <p style={{ fontSize: 15, color: "#999", lineHeight: 1.75, margin: 0 }}>{p.pain}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── DIFERENCIADORES ─────────────────────────────────── */}
+      <section className="section-pad sr" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: 1180, margin: "0 auto" }}>
+          <div style={{ maxWidth: 560, marginBottom: 56 }}>
+            <p style={{ color: G, fontSize: 12, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: 14 }}>Por qué Flowix Book</p>
+            <h2 style={{ fontSize: "clamp(26px, 3vw, 44px)", fontWeight: 800, letterSpacing: "-2px", lineHeight: 1.08, margin: "0 0 14px" }}>
+              No es lo mismo que<br />lo que ya tenés.
+            </h2>
+            <p style={{ color: "#666", fontSize: 15, lineHeight: 1.75, margin: 0 }}>
+              Excel y Google Calendar no fueron hechos para gestionar un negocio de servicios. Flowix Book sí.
+            </p>
+          </div>
+
+          {/* Tabla */}
+          <div style={{ overflowX: "auto" as const }}>
+            <table style={{ width: "100%", borderCollapse: "separate" as const, borderSpacing: 0 }}>
+              <thead>
+                <tr>
+                  <th style={{ width: "28%", padding: "12px 20px", textAlign: "left" as const, fontSize: 12, color: "#333", fontWeight: 600, textTransform: "uppercase" as const, letterSpacing: "0.08em" }}></th>
+                  {[
+                    { label: "Excel / Sheets",    muted: true  },
+                    { label: "Google Calendar",   muted: true  },
+                    { label: "Flowix Book",       muted: false },
+                  ].map((col, ci) => (
+                    <th key={ci} style={{
+                      width: "24%", padding: "12px 20px", textAlign: "center" as const,
+                      fontSize: 13, fontWeight: 700,
+                      color: col.muted ? "#444" : G,
+                      background: col.muted ? "transparent" : "rgba(0,204,106,0.04)",
+                      borderRadius: ci === 2 ? "12px 12px 0 0" : undefined,
+                      border: ci === 2 ? "1px solid rgba(0,204,106,0.2)" : undefined,
+                      borderBottom: ci === 2 ? "none" : undefined,
+                    }}>{col.label}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { feature: "Turnos y agenda",              excel: false, gcal: true,  flowix: true  },
+                  { feature: "Caja y cobros",                excel: false, gcal: false, flowix: true  },
+                  { feature: "Comisiones por profesional",   excel: false, gcal: false, flowix: true  },
+                  { feature: "Historial de clientes",        excel: false, gcal: false, flowix: true  },
+                  { feature: "Reportes automáticos",         excel: false, gcal: false, flowix: true  },
+                  { feature: "Cierre de caja diario",        excel: false, gcal: false, flowix: true  },
+                  { feature: "Sin fórmulas ni configuración",excel: false, gcal: false, flowix: true  },
+                  { feature: "Soporte local en Argentina",   excel: false, gcal: false, flowix: true  },
+                ].map((row, ri) => {
+                  const isLast = ri === 7;
+                  const cell = (val: boolean, isFlowix: boolean) => (
+                    <td style={{
+                      padding: "14px 20px", textAlign: "center" as const,
+                      background: isFlowix ? "rgba(0,204,106,0.04)" : "transparent",
+                      borderLeft:   isFlowix ? "1px solid rgba(0,204,106,0.2)" : undefined,
+                      borderRight:  isFlowix ? "1px solid rgba(0,204,106,0.2)" : undefined,
+                      borderBottom: isFlowix && isLast ? "1px solid rgba(0,204,106,0.2)" : isFlowix ? "1px solid rgba(0,204,106,0.08)" : "1px solid rgba(255,255,255,0.04)",
+                      borderRadius: isFlowix && isLast ? "0 0 12px 12px" : undefined,
+                    }}>
+                      {val
+                        ? <span style={{ color: isFlowix ? G : "#555", fontSize: 16, fontWeight: 700 }}>✓</span>
+                        : <span style={{ color: "#2a2a2a", fontSize: 16 }}>✕</span>
+                      }
+                    </td>
+                  );
+                  return (
+                    <tr key={ri}>
+                      <td style={{ padding: "14px 20px", fontSize: 14, color: "#777", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>{row.feature}</td>
+                      {cell(row.excel,  false)}
+                      {cell(row.gcal,   false)}
+                      {cell(row.flowix, true)}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
@@ -257,7 +361,7 @@ export default function LandingPage() {
             <h2 style={{ fontSize: "clamp(28px, 3.5vw, 52px)", fontWeight: 800, letterSpacing: "-2.5px", lineHeight: 1.04, margin: "0 0 18px" }}>
               Todo lo que necesitás,<br /><em style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic", color: G }}>en un solo lugar.</em>
             </h2>
-            <p style={{ color: "#6b6b6b", fontSize: 16, lineHeight: 1.75, margin: 0 }}>
+            <p style={{ color: "#999", fontSize: 16, lineHeight: 1.75, margin: 0 }}>
               Sin aprendizaje complicado, sin configuraciones eternas. Empezás a usar Flowix el mismo día que lo instalás.
             </p>
           </div>
@@ -268,10 +372,10 @@ export default function LandingPage() {
                 borderRadius: 18, padding: "28px", position: "relative", overflow: "hidden",
                 transitionDelay: `${i * 0.07}s`,
               }}>
-                <div style={{ position: "absolute", top: 20, right: 20, background: "rgba(255,255,255,0.04)", borderRadius: 7, padding: "3px 10px", fontSize: 11, color: "#333", fontWeight: 600 }}>{f.tag}</div>
+                <div style={{ position: "absolute", top: 16, right: 16, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 7, padding: "3px 10px", fontSize: 11, color: "#666", fontWeight: 600, letterSpacing: "0.04em" }}>{f.tag}</div>
                 <div style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(0,204,106,0.08)", border: "1px solid rgba(0,204,106,0.12)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, marginBottom: 20 }}>{f.icon}</div>
                 <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 10, letterSpacing: "-0.3px" }}>{f.title}</h3>
-                <p style={{ fontSize: 14, color: "#6b6b6b", lineHeight: 1.65, margin: 0 }}>{f.desc}</p>
+                <p style={{ fontSize: 14, color: "#999", lineHeight: 1.65, margin: 0 }}>{f.desc}</p>
               </div>
             ))}
           </div>
@@ -287,9 +391,9 @@ export default function LandingPage() {
           </h2>
           <div style={{ display: "flex", flexDirection: "column" as const }}>
             {[
-              { n: "01", title: "Descargá e instalá", desc: "Un instalador para Windows 10/11. Doble clic y listo, sin configuraciones complejas ni permisos de IT." },
-              { n: "02", title: "Elegí tu rubro y armá tu equipo", desc: "Seleccionás tu rubro (barbería, spa, estética…), agregás tus profesionales y configurás los servicios." },
-              { n: "03", title: "Empezá a gestionar desde el día uno", desc: "Cargá tus primeros clientes, agendá turnos y empezá a ver reportes. El sistema se adapta a vos." },
+              { n: "01", title: "Hablamos", desc: "Nos contás qué necesita tu negocio. Una charla corta y ya entendemos tu operación — rubros, equipo, servicios." },
+              { n: "02", title: "Te configuramos todo", desc: "Cargamos tus servicios, profesionales y configuraciones. Vos no tocás nada técnico, nosotros lo dejamos listo." },
+              { n: "03", title: "Empezás a gestionar", desc: "El sistema ya está operativo. Agendás turnos, cerrás caja y ves reportes desde el primer día." },
             ].map((s, i) => (
               <div key={s.n} className="sr" style={{ display: "flex", gap: 32, paddingBottom: 48, position: "relative", transitionDelay: `${i * 0.12}s` }}>
                 {i < 2 && <div style={{ position: "absolute", left: 23, top: 48, bottom: 0, width: 1, background: "rgba(255,255,255,0.05)" }} />}
@@ -302,11 +406,39 @@ export default function LandingPage() {
                 }}>{s.n}</div>
                 <div style={{ paddingTop: 10 }}>
                   <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 8, letterSpacing: "-0.5px" }}>{s.title}</h3>
-                  <p style={{ fontSize: 14, color: "#6b6b6b", lineHeight: 1.7, margin: 0 }}>{s.desc}</p>
+                  <p style={{ fontSize: 14, color: "#999", lineHeight: 1.7, margin: 0 }}>{s.desc}</p>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── NICHES ──────────────────────────────────────────── */}
+      <section className="section-pad sr" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: 1180, margin: "0 auto", textAlign: "center" as const }}>
+          <p style={{ color: G, fontSize: 12, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: 14 }}>Para tu negocio</p>
+          <h2 style={{ fontSize: "clamp(26px, 3vw, 44px)", fontWeight: 800, letterSpacing: "-2px", lineHeight: 1.08, margin: "0 0 14px" }}>
+            ¿Tu negocio está acá?
+          </h2>
+          <p style={{ color: "#666", fontSize: 15, lineHeight: 1.75, maxWidth: 480, margin: "0 auto 44px" }}>
+            Flowix Book está pensado para negocios de servicios que trabajan con turnos, profesionales y caja diaria.
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center", marginBottom: 28 }}>
+            {niches.map(n => (
+              <div key={n.label} className="niche-chip" style={{
+                display: "flex", alignItems: "center", gap: 8,
+                background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: 12, padding: "10px 18px", fontSize: 14, color: "#aaa", cursor: "default",
+              }}>
+                <span style={{ fontSize: 17 }}>{n.emoji}</span> {n.label}
+              </div>
+            ))}
+          </div>
+          <p style={{ fontSize: 13, color: "#444" }}>
+            ¿No ves tu rubro?{" "}
+            <a href={WA_GENERAL} target="_blank" rel="noopener noreferrer" style={{ color: G, textDecoration: "none", fontWeight: 600 }}>Igual puede funcionar →</a>
+          </p>
         </div>
       </section>
 
@@ -319,224 +451,109 @@ export default function LandingPage() {
             <h2 style={{ fontSize: "clamp(28px, 3.5vw, 52px)", fontWeight: 800, letterSpacing: "-2.5px", lineHeight: 1.04, margin: "0 0 18px" }}>
               Cada módulo resuelve<br /><em style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic", color: G }}>un problema real.</em>
             </h2>
-            <p style={{ color: "#6b6b6b", fontSize: 16, lineHeight: 1.75, margin: 0 }}>
+            <p style={{ color: "#999", fontSize: 16, lineHeight: 1.75, margin: 0 }}>
               No es un sistema genérico con funciones de relleno. Cada parte de Flowix fue diseñada con el flujo de trabajo real de tu negocio en mente.
             </p>
           </div>
 
-          {/* Agenda */}
-          <div className="detail-row sr" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center", marginBottom: 80 }}>
-            <div>
-              <div style={{ display: "inline-block", background: "rgba(0,204,106,0.08)", border: "1px solid rgba(0,204,106,0.15)", borderRadius: 8, padding: "4px 12px", fontSize: 11, color: G, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" as const, marginBottom: 22 }}>Agenda</div>
-              <h3 style={{ fontSize: "clamp(20px, 2.5vw, 30px)", fontWeight: 800, letterSpacing: "-1.2px", lineHeight: 1.1, marginBottom: 16 }}>Control de turnos sin planillas ni cuadernos</h3>
-              <p style={{ color: "#6b6b6b", fontSize: 15, lineHeight: 1.8, marginBottom: 26 }}>
-                Vista diaria y semanal con cada turno asignado al profesional correspondiente. Agregás un turno en menos de 10 segundos. Sin cruces, sin solapamientos, sin confusiones.
-              </p>
-              <div style={{ display: "flex", flexDirection: "column" as const, gap: 11 }}>
-                {[
-                  "Alta de turno rápida con buscador de cliente",
-                  "Vista por profesional o por día completo",
-                  "Historial de turnos de cada cliente",
-                  "Cierre automático de turnos completados",
-                ].map(f => (
-                  <div key={f} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                    <span style={{ color: G, fontWeight: 700, fontSize: 13, marginTop: 1, flexShrink: 0 }}>✓</span>
-                    <span style={{ fontSize: 14, color: "#777", lineHeight: 1.5 }}>{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div style={{ background: "rgba(8,8,10,0.95)", border: "1px solid rgba(255,255,255,0.09)", borderRadius: 18, overflow: "hidden" }}>
-              <div style={{ padding: "10px 14px", background: "rgba(255,255,255,0.02)", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", gap: 6 }}>
-                {["#ff5f56","#ffbd2e","#27c93f"].map(c => <div key={c} style={{ width: 9, height: 9, borderRadius: "50%", background: c }} />)}
-                <span style={{ flex: 1, textAlign: "center" as const, fontSize: 10, color: "#333", fontWeight: 600 }}>Flowix — Agenda · Martes</span>
-              </div>
-              <div style={{ padding: 20 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
-                  <div>
-                    <p style={{ margin: 0, fontSize: 12, fontWeight: 700 }}>Martes, 27 de mayo</p>
-                    <p style={{ margin: 0, fontSize: 10, color: "#444" }}>4 turnos · $48.000 proyectados</p>
-                  </div>
-                  <div style={{ background: "rgba(0,204,106,0.1)", border: "1px solid rgba(0,204,106,0.2)", borderRadius: 7, padding: "4px 10px", fontSize: 10, color: G, fontWeight: 600 }}>En curso</div>
-                </div>
-                {[
-                  { time: "09:00", name: "Matías G.",  service: "Corte + barba",  color: G,        done: true  },
-                  { time: "10:30", name: "Lucas P.",   service: "Corte clásico", color: "#a78bfa", done: false },
-                  { time: "12:00", name: "Diego M.",   service: "Degradé",       color: "#60a5fa", done: false },
-                  { time: "15:00", name: "Bruno A.",   service: "Barba",         color: "#f59e0b", done: false },
-                ].map((a, i) => (
-                  <div key={i} style={{
-                    display: "flex", alignItems: "center", gap: 10,
-                    padding: "8px 10px", borderRadius: 10, marginBottom: 6,
-                    background: a.done ? "rgba(0,204,106,0.04)" : "rgba(255,255,255,0.025)",
-                    border: `1px solid ${a.done ? "rgba(0,204,106,0.12)" : "rgba(255,255,255,0.05)"}`,
-                  }}>
-                    <span style={{ fontSize: 10, color: "#444", width: 34, flexShrink: 0, fontFamily: "monospace" }}>{a.time}</span>
-                    <div style={{ width: 3, height: 28, borderRadius: 3, background: a.color, flexShrink: 0 }} />
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <p style={{ margin: 0, fontSize: 12, fontWeight: 600 }}>{a.name}</p>
-                      <p style={{ margin: 0, fontSize: 10, color: "#555" }}>{a.service}</p>
-                    </div>
-                    {a.done && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={G} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Caja */}
-          <div className="detail-row sr" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center", marginBottom: 80, direction: "rtl" as const }}>
-            <div style={{ direction: "ltr" as const }}>
-              <div style={{ display: "inline-block", background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.15)", borderRadius: 8, padding: "4px 12px", fontSize: 11, color: "#f59e0b", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" as const, marginBottom: 22 }}>Caja & Pagos</div>
-              <h3 style={{ fontSize: "clamp(20px, 2.5vw, 30px)", fontWeight: 800, letterSpacing: "-1.2px", lineHeight: 1.1, marginBottom: 16 }}>Cierre de caja en un clic, sin calculadora</h3>
-              <p style={{ color: "#6b6b6b", fontSize: 15, lineHeight: 1.8, marginBottom: 26 }}>
-                Registrá cada cobro con el método de pago correspondiente. Las comisiones de cada profesional se calculan automáticamente. El cierre del día te da el total neto en segundos.
-              </p>
-              <div style={{ display: "flex", flexDirection: "column" as const, gap: 11 }}>
-                {[
-                  "Efectivo, tarjeta, transferencia y más",
-                  "Comisiones automáticas por profesional",
-                  "Egresos y gastos del local integrados",
-                  "Cierre diario con resumen neto",
-                ].map(f => (
-                  <div key={f} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                    <span style={{ color: "#f59e0b", fontWeight: 700, fontSize: 13, marginTop: 1, flexShrink: 0 }}>✓</span>
-                    <span style={{ fontSize: 14, color: "#777", lineHeight: 1.5 }}>{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div style={{ direction: "ltr" as const, background: "rgba(8,8,10,0.95)", border: "1px solid rgba(255,255,255,0.09)", borderRadius: 18, overflow: "hidden" }}>
-              <div style={{ padding: "10px 14px", background: "rgba(255,255,255,0.02)", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", gap: 6 }}>
-                {["#ff5f56","#ffbd2e","#27c93f"].map(c => <div key={c} style={{ width: 9, height: 9, borderRadius: "50%", background: c }} />)}
-                <span style={{ flex: 1, textAlign: "center" as const, fontSize: 10, color: "#333", fontWeight: 600 }}>Flowix — Caja del día</span>
-              </div>
-              <div style={{ padding: 20 }}>
-                <p style={{ fontSize: 9, color: "#333", fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>Ingresos hoy</p>
-                <p style={{ fontSize: 42, fontWeight: 900, color: G, letterSpacing: "-2px", margin: "0 0 4px", lineHeight: 1 }}>$48.000</p>
-                <p style={{ fontSize: 12, color: "#444", marginBottom: 16 }}>de 4 atenciones · 3 profesionales</p>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 14 }}>
-                  {[{ label: "Efectivo", val: "$22.000", c: "#60a5fa" }, { label: "Transferencia", val: "$18.000", c: "#a78bfa" }, { label: "Tarjeta", val: "$8.000", c: "#f59e0b" }].map(m => (
-                    <div key={m.label} style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 10, padding: "10px 8px", textAlign: "center" as const }}>
-                      <p style={{ margin: 0, fontSize: 12, fontWeight: 700, color: m.c }}>{m.val}</p>
-                      <p style={{ margin: 0, fontSize: 9, color: "#444", marginTop: 2 }}>{m.label}</p>
-                    </div>
-                  ))}
-                </div>
-                <div style={{ background: "rgba(0,204,106,0.06)", border: "1px solid rgba(0,204,106,0.15)", borderRadius: 10, padding: "10px 14px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span style={{ fontSize: 12, color: "#777" }}>Neto después de comisiones</span>
-                  <span style={{ fontSize: 15, fontWeight: 800, color: G }}>$34.200</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Reportes */}
-          <div className="detail-row sr" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
-            <div>
-              <div style={{ display: "inline-block", background: "rgba(96,165,250,0.08)", border: "1px solid rgba(96,165,250,0.15)", borderRadius: 8, padding: "4px 12px", fontSize: 11, color: "#60a5fa", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" as const, marginBottom: 22 }}>Reportes</div>
-              <h3 style={{ fontSize: "clamp(20px, 2.5vw, 30px)", fontWeight: 800, letterSpacing: "-1.2px", lineHeight: 1.1, marginBottom: 16 }}>Entendé tu negocio con datos reales</h3>
-              <p style={{ color: "#6b6b6b", fontSize: 15, lineHeight: 1.8, marginBottom: 26 }}>
-                Los reportes te muestran cuánto ganaste, qué servicios son los más pedidos, qué días son más movidos y cómo rinde cada profesional. Todo sin exportar nada ni hacer cuentas.
-              </p>
-              <div style={{ display: "flex", flexDirection: "column" as const, gap: 11 }}>
-                {[
-                  "Ingresos por día, semana y mes",
-                  "Servicios más demandados",
-                  "Rendimiento individual por profesional",
-                  "Detalle de cada operación del día",
-                ].map(f => (
-                  <div key={f} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                    <span style={{ color: "#60a5fa", fontWeight: 700, fontSize: 13, marginTop: 1, flexShrink: 0 }}>✓</span>
-                    <span style={{ fontSize: 14, color: "#777", lineHeight: 1.5 }}>{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div style={{ background: "rgba(8,8,10,0.95)", border: "1px solid rgba(255,255,255,0.09)", borderRadius: 18, overflow: "hidden" }}>
-              <div style={{ padding: "10px 14px", background: "rgba(255,255,255,0.02)", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", gap: 6 }}>
-                {["#ff5f56","#ffbd2e","#27c93f"].map(c => <div key={c} style={{ width: 9, height: 9, borderRadius: "50%", background: c }} />)}
-                <span style={{ flex: 1, textAlign: "center" as const, fontSize: 10, color: "#333", fontWeight: 600 }}>Flowix — Reportes · Mayo</span>
-              </div>
-              <div style={{ padding: 20 }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 14 }}>
-                  {[{ label: "Este mes", val: "$312.000", color: G }, { label: "Vs. mes anterior", val: "+18%", color: "#60a5fa" }].map(s => (
-                    <div key={s.label} style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 10, padding: "12px 14px" }}>
-                      <p style={{ margin: 0, fontSize: 9, color: "#444", marginBottom: 4, textTransform: "uppercase" as const, letterSpacing: "0.08em" }}>{s.label}</p>
-                      <p style={{ margin: 0, fontSize: 20, fontWeight: 800, color: s.color, letterSpacing: "-0.5px" }}>{s.val}</p>
-                    </div>
-                  ))}
-                </div>
-                <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)", borderRadius: 10, padding: "12px 14px", marginBottom: 12 }}>
-                  <p style={{ margin: "0 0 10px", fontSize: 9, color: "#333", fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.09em" }}>Ingresos — últimos 7 días</p>
-                  <div style={{ display: "flex", alignItems: "flex-end", gap: 4, height: 44 }}>
-                    {[38, 60, 42, 78, 52, 88, 65].map((h, i) => (
-                      <div key={i} style={{ flex: 1, height: `${h}%`, borderRadius: "3px 3px 0 0", background: i === 6 ? G : `rgba(0,204,106,${0.12 + i * 0.06})` }} />
-                    ))}
-                  </div>
-                </div>
-                <p style={{ margin: 0, fontSize: 9, color: "#333", fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.09em", marginBottom: 8 }}>Servicios más pedidos</p>
-                {[["Corte + barba", "42%"], ["Corte clásico", "31%"], ["Degradé", "18%"]].map(([svc, pct]) => (
-                  <div key={svc} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
-                    <span style={{ fontSize: 11, color: "#666", flex: 1 }}>{svc}</span>
-                    <div style={{ width: 80, height: 4, background: "rgba(255,255,255,0.06)", borderRadius: 4, overflow: "hidden" }}>
-                      <div style={{ width: pct, height: "100%", background: G, borderRadius: 4 }} />
-                    </div>
-                    <span style={{ fontSize: 10, color: "#444", width: 28, textAlign: "right" as const }}>{pct}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className="sr">
+            <FeatureTabs />
           </div>
 
         </div>
       </section>
 
-      {/* ── DOWNLOAD ────────────────────────────────────────── */}
-      <section id="download" className="section-pad" style={{ padding: "80px 40px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ maxWidth: 1180, margin: "0 auto" }}>
-          <div className="download-grid sr" style={{
-            background: "linear-gradient(135deg, rgba(0,204,106,0.06) 0%, rgba(0,0,0,0) 55%)",
-            border: "1px solid rgba(0,204,106,0.12)", borderRadius: 24,
-            padding: "64px 64px", display: "grid", gridTemplateColumns: "1fr auto", gap: 40, alignItems: "center",
+      {/* ── FAQ ──────────────────────────────────────────────── */}
+      <section className="section-pad" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.01)" }}>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+          <div className="sr" style={{ marginBottom: 52, textAlign: "center" as const }}>
+            <p style={{ color: G, fontSize: 12, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: 14 }}>FAQ</p>
+            <h2 style={{ fontSize: "clamp(28px, 4vw, 52px)", fontWeight: 800, letterSpacing: "-2.5px", lineHeight: 1.04 }}>
+              Preguntas frecuentes
+            </h2>
+          </div>
+          <div className="sr" style={{ display: "flex", flexDirection: "column" as const }}>
+            {[
+              { q: "¿Funciona sin internet?", a: "Sí necesitás conexión a internet — los datos viven en la nube para que nunca los pierdas y puedas acceder desde cualquier dispositivo." },
+              { q: "¿Cuántos profesionales puedo agregar?", a: "Los que necesites. No hay límite de profesionales. Podés tener uno o diez, cada uno con su propio perfil, servicios y comisiones." },
+              { q: "¿Qué pasa con mis datos si desinstalo?", a: "Nada. Los datos están en la nube, no en la computadora. Si desinstalás y volvés a instalar, o entrás desde la web, todo sigue exactamente igual." },
+              { q: "¿Funciona solo en Windows?", a: "La app de escritorio es para Windows 10/11. Pero también podés usar Flowix desde cualquier navegador, sin instalar nada." },
+              { q: "¿Cuánto tarda en configurarse?", a: "El mismo día. Instalás, creás tu cuenta, cargás tus servicios y profesionales, y empezás a gestionar. La mayoría lo tiene listo en menos de una hora." },
+              { q: "¿Puedo ver cómo funciona antes de decidir?", a: "Sí. Hablamos, te mostramos el sistema en vivo y te explicamos cómo se adaptaría a tu negocio. Sin compromiso." },
+            ].map((item, i) => (
+              <details key={i} className="faq-item" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+                <summary style={{ padding: "20px 4px", fontSize: 16, fontWeight: 600, color: "#ccc", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16 }}>
+                  {item.q}
+                  <span className="faq-arrow" style={{ color: G, fontSize: 22, fontWeight: 300, flexShrink: 0, lineHeight: 1 }}>+</span>
+                </summary>
+                <p style={{ fontSize: 15, color: "#999", lineHeight: 1.75, paddingBottom: 20, paddingLeft: 4, margin: 0 }}>{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIAL ─────────────────────────────────────── */}
+      <section className="section-pad" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+          <div className="sr" style={{
+            background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.08)",
+            borderRadius: 24, padding: "48px 56px", position: "relative", overflow: "hidden",
           }}>
-            <div>
-              <p style={{ color: G, fontSize: 12, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: 14 }}>Descarga gratuita</p>
-              <h2 style={{ fontSize: "clamp(28px, 3.5vw, 52px)", fontWeight: 800, letterSpacing: "-2.5px", margin: "0 0 16px", lineHeight: 1.04 }}>
-                Instalá Flowix<br /><em style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic", color: G }}>en tu PC hoy.</em>
-              </h2>
-              <p style={{ color: "#6b6b6b", fontSize: 16, lineHeight: 1.75, margin: "0 0 32px", maxWidth: 420 }}>
-                Los datos viven en la nube, el programa en tu escritorio. Rápido, confiable y siempre actualizado.
-              </p>
-              <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-                {["Windows 10 / 11", "64-bit", "v1.0.0", "Gratis"].map(t => (
-                  <span key={t} style={{ color: "#444", fontSize: 13, display: "flex", alignItems: "center", gap: 6 }}>
-                    <span style={{ color: G }}>✓</span> {t}
-                  </span>
-                ))}
+            <div aria-hidden style={{ position: "absolute", top: -60, right: -60, width: 240, height: 240, background: "radial-gradient(circle, rgba(0,204,106,0.07) 0%, transparent 65%)", pointerEvents: "none" }} />
+            <p style={{ fontSize: 72, color: G, opacity: 0.15, lineHeight: 0.8, marginBottom: 28, fontFamily: "Georgia, serif", position: "relative" }}>"</p>
+            <p style={{ fontSize: "clamp(16px, 1.9vw, 20px)", color: "#ccc", lineHeight: 1.8, fontStyle: "italic", fontFamily: "Georgia, 'Times New Roman', serif", marginBottom: 36, position: "relative" }}>
+              Antes anotaba los turnos en un cuaderno y cerraba la caja haciendo cuentas en la cabeza. Con Flowix tardé una tarde en configurarlo y al día siguiente ya tenía todo ordenado. Ahora sé exactamente cuánto entró cada día y qué le toca a cada chico del equipo.
+            </p>
+            <div style={{ display: "flex", alignItems: "center", gap: 16, position: "relative" }}>
+              <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(0,204,106,0.1)", border: "1px solid rgba(0,204,106,0.25)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 17, fontWeight: 800, color: G, flexShrink: 0 }}>F</div>
+              <div>
+                <p style={{ fontWeight: 700, fontSize: 15, margin: 0 }}>Fernando G.</p>
+                <p style={{ color: "#555", fontSize: 13, margin: "3px 0 0" }}>Barbería — Buenos Aires</p>
               </div>
             </div>
-            <div className="download-cta" style={{ textAlign: "center" as const }}>
-              <a href="https://github.com/alegresystems26/flowix-releases/releases/download/v1.0.0/Flowix.Setup.1.0.0.exe" style={{
-                display: "inline-flex", alignItems: "center", gap: 10,
-                background: G, color: "#000", fontWeight: 700, fontSize: 16,
-                textDecoration: "none", padding: "16px 36px", borderRadius: 14,
-                whiteSpace: "nowrap" as const, letterSpacing: "-0.3px",
-              }}>↓ Descargar .exe</a>
-              <p style={{ color: "#333", fontSize: 12, marginTop: 12 }}>~78 MB · Windows 10/11</p>
-              <a
-                href="/docs/instructivo_flowix.pdf"
-                download
-                style={{
-                  display: "inline-flex", alignItems: "center", gap: 7, marginTop: 16,
-                  color: "#555", fontSize: 13, textDecoration: "none",
-                  border: "1px solid rgba(255,255,255,0.08)", borderRadius: 9,
-                  padding: "9px 18px", background: "rgba(255,255,255,0.03)",
-                  transition: "color 0.2s",
-                }}
-              >
-                📄 Instructivo de instalación (PDF)
-              </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA FINAL ────────────────────────────────────────── */}
+      <section id="contacto" className="section-pad" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", position: "relative", overflow: "hidden" }}>
+        <div aria-hidden style={{ position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "90%", height: "60%", background: "radial-gradient(ellipse, rgba(0,204,106,0.1) 0%, transparent 65%)", pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1180, margin: "0 auto", position: "relative" }}>
+          <div className="cta-box sr" style={{
+            background: "linear-gradient(160deg, rgba(0,204,106,0.12) 0%, rgba(0,0,0,0) 55%)",
+            border: "1px solid rgba(0,204,106,0.3)", borderRadius: 28,
+            textAlign: "center" as const, position: "relative", overflow: "hidden",
+            boxShadow: "0 0 120px rgba(0,204,106,0.12), 0 40px 120px rgba(0,0,0,0.55)",
+          }}>
+            <div aria-hidden style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent 0%, rgba(0,204,106,0.9) 50%, transparent 100%)", pointerEvents: "none" }} />
+            <div aria-hidden style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "28px 28px", maskImage: "radial-gradient(ellipse 85% 85% at 50% 50%, #000 10%, transparent 80%)", WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 50% 50%, #000 10%, transparent 80%)", pointerEvents: "none" }} />
+            <div aria-hidden style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 800, height: 400, background: "radial-gradient(ellipse, rgba(0,204,106,0.14) 0%, transparent 65%)", pointerEvents: "none" }} />
+            <p style={{ color: G, fontSize: 12, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: 20, position: "relative" }}>Empezá hoy</p>
+            <h2 style={{ fontSize: "clamp(28px, 4.5vw, 60px)", fontWeight: 800, letterSpacing: "-3px", lineHeight: 1.02, marginBottom: 20, position: "relative" }}>
+              Tu negocio, organizado<br />de una vez.
+            </h2>
+            <p style={{ fontSize: 17, color: "#999", lineHeight: 1.75, maxWidth: 460, margin: "0 auto 44px", position: "relative" }}>
+              Hablamos, te configuramos el sistema y en 24 horas ya estás gestionando como un profesional.
+            </p>
+            <div className="cta-buttons" style={{ position: "relative" }}>
+              <a href={WA_GENERAL} target="_blank" rel="noopener noreferrer" style={{
+                background: "linear-gradient(135deg, #00CC6A 0%, #00E87A 100%)", color: "#000", fontWeight: 700, fontSize: 15,
+                textDecoration: "none", padding: "16px 36px", borderRadius: 12,
+                boxShadow: "0 0 40px rgba(0,204,106,0.35)",
+              }}>Quiero probarlo →</a>
+              <a href={`${APP_URL}/login`} style={{
+                background: "rgba(255,255,255,0.05)", color: "#ccc", fontWeight: 500, fontSize: 15,
+                textDecoration: "none", padding: "16px 36px", borderRadius: 12,
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}>Ya tengo cuenta →</a>
+            </div>
+            <div style={{ display: "flex", gap: 32, justifyContent: "center", flexWrap: "wrap", marginTop: 36, position: "relative" }}>
+              {["Sin contratos", "Configuración incluida", "Soporte local"].map(t => (
+                <span key={t} style={{ color: "#555", fontSize: 13, display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ color: G, fontWeight: 700 }}>✓</span> {t}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -566,7 +583,7 @@ export default function LandingPage() {
               {[
                 { label: "Funciones",    href: "#features" },
                 { label: "El sistema",   href: "#detalle" },
-                { label: "Descargar",    href: "#download" },
+                { label: "Probarlo",     href: "#contacto" },
                 { label: "Crear cuenta", href: `${APP_URL}/register` },
                 { label: "Ingresar",     href: `${APP_URL}/login` },
               ].map(l => (
@@ -601,17 +618,7 @@ export default function LandingPage() {
         </div>
       </footer>
 
-      {/* Scroll-reveal */}
-      <script dangerouslySetInnerHTML={{ __html: `
-        (function(){
-          var io = new IntersectionObserver(function(entries){
-            entries.forEach(function(e){
-              if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-            });
-          },{ threshold: 0.1 });
-          document.querySelectorAll('.sr').forEach(function(el){ io.observe(el); });
-        })();
-      ` }} />
+      <ScrollReveal />
     </main>
   );
 }
