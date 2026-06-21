@@ -66,7 +66,8 @@ export default function LandingPage() {
         </div>
         <div className="nav-links" style={{ display: "flex", alignItems: "center", gap: 2 }}>
           <a href="#features" className="nav-link" style={{ color: "#71717a", fontSize: 14, textDecoration: "none", padding: "8px 16px", borderRadius: 8 }}>Funciones</a>
-          <a href="#detalle"  className="nav-link" style={{ color: "#71717a", fontSize: 14, textDecoration: "none", padding: "8px 16px", borderRadius: 8 }}>El sistema</a>
+          <a href="#detalle"  className="nav-link" style={{ color: "#71717a", fontSize: 14, textDecoration: "none", padding: "8px 16px", borderRadius: 8 }}>Sistema</a>
+          <a href="#niches"   className="nav-link" style={{ color: "#71717a", fontSize: 14, textDecoration: "none", padding: "8px 16px", borderRadius: 8 }}>Para quién</a>
           <a href="#contacto" className="nav-link" style={{ color: "#71717a", fontSize: 14, textDecoration: "none", padding: "8px 16px", borderRadius: 8 }}>Contacto</a>
         </div>
         <a href={WA_GENERAL} target="_blank" rel="noopener noreferrer" style={{ background: "linear-gradient(135deg, #00CC6A 0%, #00E87A 100%)", color: "#000", fontSize: 14, fontWeight: 700, textDecoration: "none", padding: "10px 24px", borderRadius: 10 }}>Quiero probarlo</a>
@@ -416,7 +417,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── NICHES ──────────────────────────────────────────── */}
-      <section className="section-pad sr" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section id="niches" className="section-pad sr" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto", textAlign: "center" as const }}>
           <p style={{ color: G, fontSize: 12, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: 14 }}>Para tu negocio</p>
           <h2 style={{ fontSize: "clamp(26px, 3vw, 44px)", fontWeight: 800, letterSpacing: "-2px", lineHeight: 1.08, margin: "0 0 14px" }}>
