@@ -66,9 +66,9 @@ export default function LandingPage() {
         <div className="nav-links" style={{ display: "flex", alignItems: "center", gap: 2 }}>
           <a href="#features" className="nav-link" style={{ color: "#71717a", fontSize: 14, textDecoration: "none", padding: "8px 16px", borderRadius: 8 }}>Funciones</a>
           <a href="#detalle"  className="nav-link" style={{ color: "#71717a", fontSize: 14, textDecoration: "none", padding: "8px 16px", borderRadius: 8 }}>El sistema</a>
-          <a href={`${APP_URL}/login`} className="nav-link" style={{ color: "#71717a", fontSize: 14, textDecoration: "none", padding: "8px 16px", borderRadius: 8 }}>Ingresar</a>
+          <a href="#contacto" className="nav-link" style={{ color: "#71717a", fontSize: 14, textDecoration: "none", padding: "8px 16px", borderRadius: 8 }}>Contacto</a>
         </div>
-        <a href={WA_GENERAL} target="_blank" rel="noopener noreferrer" style={{ background: G, color: "#000", fontSize: 14, fontWeight: 700, textDecoration: "none", padding: "10px 24px", borderRadius: 10 }}>Quiero probarlo</a>
+        <a href={WA_GENERAL} target="_blank" rel="noopener noreferrer" style={{ background: "linear-gradient(135deg, #00CC6A 0%, #00E87A 100%)", color: "#000", fontSize: 14, fontWeight: 700, textDecoration: "none", padding: "10px 24px", borderRadius: 10 }}>Quiero probarlo</a>
       </nav>
 
       {/* ── HERO ─────────────────────────────────────────────── */}
